@@ -1,0 +1,374 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ruddy | Développeur Informatique &amp; Concepteur d'Application</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@300;400;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Canvas d'animation Matrix en arrière-plan -->
+    <canvas id="matrix-canvas"></canvas>
+
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="#hero" class="nav-logo">&gt; ruddy.sh<span class="cursor">_</span></a>
+            <button class="nav-toggle" id="nav-toggle" aria-label="Menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+            <ul class="nav-menu" id="nav-menu">
+                <li><a href="#hero" class="nav-link">&gt; ~/accueil</a></li>
+                <li><a href="#about" class="nav-link">&gt; ~/a-propos</a></li>
+                <li><a href="#skills" class="nav-link">&gt; ~/competences</a></li>
+                <li><a href="#projects" class="nav-link">&gt; ~/projets</a></li>
+                <li><a href="#experience" class="nav-link">&gt; ~/parcours</a></li>
+                <li><a href="#contact" class="nav-link">&gt; ~/contact</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <main class="container">
+        <!-- Section Hero / Terminal -->
+        <section id="hero" class="section hero-section">
+            <div class="terminal-window">
+                <div class="terminal-header">
+                    <div class="terminal-buttons">
+                        <span class="btn-close"></span>
+                        <span class="btn-minimize"></span>
+                        <span class="btn-maximize"></span>
+                    </div>
+                    <div class="terminal-title">bash - ruddy@poitiers: ~</div>
+                </div>
+                <div class="terminal-body">
+                    <p class="prompt"><span class="user">ruddy@dev</span>:<span class="path">~</span>$ <span class="cmd">whoami</span></p>
+                    <h1 class="hero-title">Ruddy - Développeur Informatique</h1>
+                    
+                    <p class="prompt"><span class="user">ruddy@dev</span>:<span class="path">~</span>$ <span class="cmd">cat intro.txt</span></p>
+                    <p id="typing-text" class="typing-container"></p>
+
+                    <p class="prompt"><span class="user">ruddy@dev</span>:<span class="path">~</span>$ <span class="cmd">./show_status.sh</span></p>
+                    <div class="status-grid">
+                        <div class="status-item">[&check;] Développeur Web &amp; Web Mobile Full Stack (Bac +2 / RNCP 37674)</div>
+                        <div class="status-item">[&check;] Disponible en Télétravail ou Présentiel (Permis B &amp; Véhicule)</div>
+                    </div>
+
+                    <div class="hero-actions">
+                        <a href="#projects" class="btn btn-primary">&gt; Voir les projets</a>
+                        <a href="#contact" class="btn btn-secondary">&gt; Me contacter</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section À Propos -->
+        <section id="about" class="section">
+            <h2 class="section-title"><span class="prompt-prefix">&gt;</span> cat about_me.json</h2>
+            <div class="about-card">
+                <div class="about-avatar">
+                    <div class="avatar-frame">
+                        <img src="cv.png" alt="Photo de profil Ruddy" id="profile-img" onerror="this.src='https://via.placeholder.com/180/0d1117/00ff66?text=RUDDY';">
+                    </div>
+                </div>
+                <div class="about-content">
+                    <p>Développeur web et web mobile passionné, motivé à appliquer mes compétences et à contribuer à des projets ambitieux.</p>
+                    <p>Fort d'une solide expérience technique maintenance système et automatisation, et maintenant en conception d'applications j'aime résoudre des problèmes complexes et apporter des solutions efficaces et pérennes.</p>
+                    <div class="info-list">
+                        <div><span class="key">Localisation :</span> Poitiers, France</div>
+                        <div><span class="key">Mobilité :</span> Télétravail / Présentiel</div>
+                        <div><span class="key">Permis :</span> Permis de conduire &amp; Véhicule personnel</div>
+                        <div><span class="key">Email :</span> ruddy.86.m@gmail.com</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section Compétences -->
+        <section id="skills" class="section">
+            <h2 class="section-title"><span class="prompt-prefix">&gt;</span> list --skills --atouts</h2>
+            <div class="skills-grid">
+                <div class="skill-category">
+                    <h3>[ Front-End &amp; Mobile ]</h3>
+                    <ul class="skill-list">
+                        <li><span>HTML5 / CSS3</span><span class="skill-level">Avancé</span></li>
+                        <li><span>JavaScript</span><span class="skill-level">Avancé</span></li>
+                        <li><span>React / Next.js</span><span class="skill-level">Pratique</span></li>
+                        <li><span>Android Studio (JAVA)</span><span class="skill-level">Pratique</span></li>
+                    </ul>
+                </div>
+                <div class="skill-category">
+                    <h3>[ Back-End &amp; BDD ]</h3>
+                    <ul class="skill-list">
+                        <li><span>PHP</span><span class="skill-level">Avancé</span></li>
+                        <li><span>SQL / MySQL</span><span class="skill-level">Avancé</span></li>
+                        <li><span>PostgreSQL</span><span class="skill-level">Pratique</span></li>
+                        <li><span>MongoDB</span><span class="skill-level">Pratique</span></li>
+                    </ul>
+                </div>
+                <div class="skill-category">
+                    <h3>[ DevOps, Systèmes &amp; Outils ]</h3>
+                    <ul class="skill-list">
+                        <li><span>Linux / Bash</span><span class="skill-level">Avancé</span></li>
+                        <li><span>Git / GitLab / GitHub</span><span class="skill-level">Avancé</span></li>
+                        <li><span>Docker / NAS Synology</span><span class="skill-level">Pratique</span></li>
+                        <li><span>Milestone / Active Directory</span><span class="skill-level">Expert</span></li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="about-card" style="margin-top: 25px;">
+                <div class="about-content" style="width: 100%;">
+                    <h3 style="color: var(--accent-color); margin-bottom: 10px;">[ Atouts &amp; Centres d'intérêt ]</h3>
+                    <div class="info-list">
+                        <div><span class="key">Atouts :</span> Polyvalence, Persévérance, Analyse rapide d'une situation, Recherche de solutions</div>
+                        <div><span class="key">Passions :</span> Cybersécurité, Domotique (Jeedom / Home Assistant), Impression 3D, Voyages</div>
+                        <div><span class="key">Engagement :</span> Professeur de Capoeira</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section Projets -->
+        <section id="projects" class="section">
+            <h2 class="section-title"><span class="prompt-prefix">&gt;</span> ls -la ./projets/</h2>
+            
+            <div class="filter-buttons">
+                <button class="filter-btn active" data-filter="all">Tous</button>
+                <button class="filter-btn" data-filter="web">Web &amp; Application</button>
+                <button class="filter-btn" data-filter="mobile">Mobile</button>
+                <button class="filter-btn" data-filter="domotique">Domotique &amp; IoT</button>
+            </div>
+
+            <div class="projects-grid">
+                <!-- Projet 1 -->
+                <div class="project-card" data-category="web">
+                    <div class="project-img-holder">
+                        <img src="https://via.placeholder.com/600x350/051005/00ff66?text=CPRO+Education" alt="CPRO éducation">
+                    </div>
+                    <div class="project-info">
+                        <h3>CPRO Éducation</h3>
+                        <p>Gestion, développement de nouveaux modules, débogage et amélioration CI/CD sur l'application CPRO Éducation pour Réseau Canopé.</p>
+                        <div class="tags">
+                            <span class="tag">PHP</span>
+                            <span class="tag">MySQL</span>
+                            <span class="tag">JavaScript</span>
+                            <span class="tag">CI/CD</span>
+                        </div>
+                        <div class="project-links">
+                            <a href="#contact" class="link-btn">&gt; Contact</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Projet 2 -->
+                <div class="project-card" data-category="mobile">
+                    <div class="project-img-holder">
+                        <img src="https://via.placeholder.com/600x350/051005/00ff66?text=Applications+Android" alt="Applications Android">
+                    </div>
+                    <div class="project-info">
+                        <h3>Applications Android (JAVA)</h3>
+                        <p>Développement sous Android Studio d'une application de suivi des bouteilles d'oxygène (CHBL Laborit).</p>
+                        <div class="tags">
+                            <span class="tag">Android Studio</span>
+                            <span class="tag">JAVA</span>
+                            <span class="tag">Mobile</span>
+                        </div>
+                        <div class="project-links">
+                            <a href="https://github.com/LGBhackinho" target="_blank" class="link-btn">&gt; GitHub</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Projet 3 -->
+                <div class="project-card" data-category="domotique">
+                    <div class="project-img-holder">
+                        <img src="cv.png" alt="Maison Domotique">
+                    </div>
+                    <div class="project-info">
+                        <h3>Maison Domotique &amp; Infrastructures</h3>
+                        <p>Système domotique complet avec Jeedom &amp; Home Assistant sous docker, NVR Caméra Milestone, borne d'arcade et afficheur connecté AWTRIX sous NAS Synology &amp; Docker.</p>
+                        <div class="tags">
+                            <span class="tag">Jeedom</span>
+                            <span class="tag">Home Assistant</span>
+                            <span class="tag">Docker</span>
+                            <span class="tag">Synology</span>
+                        </div>
+                        <div class="project-links">
+                            <a href="https://github.com/LGBhackinho" target="_blank" class="link-btn">&gt; GitHub</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Projet 4 -->
+                <div class="project-card" data-category="web">
+                    <div class="project-img-holder">
+                        <img src="https://via.placeholder.com/600x350/051005/00ff66?text=Coaching+%26+GLPI" alt="Web Apps">
+                    </div>
+                    <div class="project-info">
+                        <h3>Site Coaching</h3>
+                        <p>Conception d'un site pour coach nutritionnel. Gestion de calcul Macro nutritionnel. Enregistrement des données utilisateurs. Catalogue de recettes avec gestion de favoris</p>
+                        <div class="tags">
+                            <span class="tag">PHP</span>
+                            <span class="tag">HTML/CSS</span>
+                        </div>
+                        <div class="project-links">
+                            <a href='#' target="_blank" class="link-btn">&gt; Site Live</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Projet 5 -->
+                <div class="project-card" data-category="web">
+                    <div class="project-img-holder">
+                        <img src="https://via.placeholder.com/600x350/051005/00ff66?text=Micro-services+%26+Tools" alt="Projets personnels et outils web">
+                    </div>
+                    <div class="project-info">
+                        <h3>Projets Web &amp; Micro-services Personnels</h3>
+                        <p>Développement de diverses applications et outils sur-mesure pour répondre à mes besoins spécifiques :</p>
+                        
+                        <ul class="project-details" style="list-style: none; padding-left: 0; margin: 12px 0; font-size: 0.9em; line-height: 1.6;">
+                            <li>&gt; Downloader YouTube</li>
+                            <li>&gt; Gestionnaire d'entretiens (Maison &amp; Voiture)</li>
+                            <li>&gt; Générateur automatique de quittances de loyer</li>
+                            <li>&gt; Gestionnaire de transfert SMS</li>
+                            <li>&gt; Catalogue vidéo de rééducation kiné</li>
+                            <li>&gt; Chronomètre Tabata paramétrable</li>
+                            <li>&gt; Application de tirage au sort (Cadeaux de Noël)</li>
+                        </ul>
+
+                        <div class="tags">
+                            <span class="tag">Python</span>
+                            <span class="tag">Django</span>
+                            <span class="tag">PHP</span>
+                            <span class="tag">HTML/CSS</span>
+                            <span class="tag">Android Studio</span>
+                        </div>
+                        <div class="project-links">
+                            <a href="https://github.com/LGBhackinho" target="_blank" class="link-btn">&gt; Voir sur GitHub</a>
+                        </div>
+                    </div>
+                </div>
+
+
+            </div>
+        </section>
+
+        <!-- Section Parcours -->
+        <section id="experience" class="section">
+            <h2 class="section-title"><span class="prompt-prefix">&gt;</span> history | grep experience_and_education</h2>
+            
+            <h3 style="color: var(--accent-color); margin-bottom: 20px;">[ Expériences Professionnelles ]</h3>
+            <div class="timeline">
+                <div class="timeline-item">
+                    <div class="timeline-date">[ Janv. 2025 - Janv. 2026 ]</div>
+                    <div class="timeline-content">
+                        <h3>Concepteur d'Application - Réseau Canopé (Chasseneuil-du-Poitou)</h3>
+                        <p>Gestion de l'application CPRO Éducation (HTML, CSS, JS, PHP, MySQL) : Débugage, Amélioration de la CI/CD, Développement de nouveaux modules, Assistance Niv 1 / Niv 2.</p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-date">[ Août 2024 - Sept. 2024 ]</div>
+                    <div class="timeline-content">
+                        <h3>Stage Développeur d'Application Web &amp; Mobile - CHBL Laborit (Poitiers)</h3>
+                        <p>Gestion de deux projets majeurs : Application de suivi de bouteilles d'oxygène sous Android Studio (JAVA) et système de gestion de formulaires de tickets GLPI en PHP.</p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-date">[ Fév. 2009 - Déc. 2024 ]</div>
+                    <div class="timeline-content">
+                        <h3>Technicien Courant Faible - THEMIS FM grp BOUYGUES / IDEX (Vivonne)</h3>
+                        <p>Gestion curative et préventive des systèmes informatiques et électroniques d'un centre pénitentiaire (Milestone sur Windows Server, Switch Comnet, Active Directory, Serveur Prism, Autocom, Castel, Deny Fontaine, Motorola, Intrusion, Contrôle d'accès). Gestion de projets et formation du personnel.</p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-date">[ Mai 2001 - Fév. 2009 ]</div>
+                    <div class="timeline-content">
+                        <h3>Automatisation en Bureau d'Études - ETDE Industries BOUYGUES (Poitiers)</h3>
+                        <p>Gestion de projet, programmation d'automates, mise en service et dépannage client.</p>
+                    </div>
+                </div>
+            </div>
+
+            <h3 style="color: var(--accent-color); margin-top: 40px; margin-bottom: 20px;">[ Diplômes &amp; Formations ]</h3>
+            <div class="timeline">
+                <div class="timeline-item">
+                    <div class="timeline-date">[ Mars 2024 - Présent ]</div>
+                    <div class="timeline-content">
+                        <h3>Développeur Web &amp; Web Mobile Full Stack (Niveau 5 Bac +2)</h3>
+                        <p>RNCP 37674 - IFPA Poitiers. Spécialisation en développement Full Stack et applications modernes.</p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-date">[ Juin 2000 ]</div>
+                    <div class="timeline-content">
+                        <h3>BTS M.A.I (Mécanique et Automatismes Industriels)</h3>
+                        <p>Lycée Louis Armand - Poitiers.</p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-date">[ Juin 1998 ]</div>
+                    <div class="timeline-content">
+                        <h3>BAC STI Génie Mécanique (Option Productique)</h3>
+                        <p>Lycée Louis Armand - Poitiers.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section Contact / Mail -->
+        <section id="contact" class="section">
+            <h2 class="section-title"><span class="prompt-prefix">&gt;</span> ./send_mail.sh --to ruddy.86.m@gmail.com</h2>
+            <div class="contact-container">
+                <p class="contact-intro">Une opportunité, un projet web/mobile ou une question ? Envoyez-moi un message :</p>
+                
+                <form id="contact-form" class="terminal-form" action="https://api.web3forms.com/submit" method="POST">
+                    <input type="hidden" name="access_key" value="ff83f6e1-abab-4429-ab05-748a451b3206">
+                    <div id="form-status" class="form-status"></div>
+                    
+                    <div class="form-group">
+                        <label for="name">&gt; Votre Nom / Entreprise :</label>
+                        <input type="text" id="name" name="name" required placeholder="Ex: Jean Dupont">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="email">&gt; Votre Email :</label>
+                        <input type="email" id="email" name="email" required placeholder="ruddy.86.m@gmail.com">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="subject">&gt; Sujet :</label>
+                        <input type="text" id="subject" name="subject" required placeholder="Opportunité / Projet / Prise de contact">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="message">&gt; Message :</label>
+                        <textarea id="message" name="message" rows="5" required placeholder="Bonjour Ruddy, je souhaite échanger avec vous concernant..."></textarea>
+                    </div>
+
+                    <button type="submit" class="btn btn-primary btn-block" id="submit-btn">&gt; Transmettre le message</button>
+                </form>
+
+
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <div class="footer-content">
+            <p>&copy; <span id="year"></span> Ruddy - Portfolio Développeur Informatique.</p>
+            <div class="social-links">
+                <a href="https://github.com/LGBhackinho" target="_blank">&gt; GitHub</a>
+                <a href="https://portfolioruddy.marienutrition86.com" target="_blank">&gt; Live Portfolio</a>
+                <a href="mailto:ruddy.86.m@gmail.com">&gt; Email</a>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
