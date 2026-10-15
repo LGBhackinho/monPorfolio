@@ -11,11 +11,14 @@ document.addEventListener('DOMContentLoaded', () => {
     // 4. Filtrage des projets
     initProjectFilter();
 
-    // 5. Gestionnaire du formulaire de contact (AJAX)
-    // initContactForm();
+    // 5. Gestionnaire du formulaire de contact (AJAX / Web3Forms)
+    initContactForm();
 
     // 6. Mise à jour automatique de l'année dans le footer
-    document.getElementById('year').textContent = new Date().getFullYear();
+    const yearElement = document.getElementById('year');
+    if (yearElement) {
+        yearElement.textContent = new Date().getFullYear();
+    }
 });
 
 /* ==========================================================================
@@ -134,6 +137,8 @@ function initProjectFilter() {
     const filterBtns = document.querySelectorAll('.filter-btn');
     const projectCards = document.querySelectorAll('.project-card');
 
+    if (filterBtns.length === 0 || projectCards.length === 0) return;
+
     filterBtns.forEach(btn => {
         btn.addEventListener('click', () => {
             filterBtns.forEach(b => b.classList.remove('active'));
@@ -154,49 +159,60 @@ function initProjectFilter() {
 }
 
 /* ==========================================================================
-   5. SOUMISSION ENVOI MAIL EN AJAX
+   5. SOUMISSION ENVOI MAIL EN AJAX (WEB3FORMS)
    ========================================================================== */
-// function initContactForm() {
-//     const form = document.getElementById('contact-form');
-//     const statusDiv = document.getElementById('form-status');
-//     const submitBtn = document.getElementById('submit-btn');
+function initContactForm() {
+    const form = document.getElementById('contact-form');
+    const formStatus = document.getElementById('form-status');
+    const submitBtn = document.getElementById('submit-btn');
 
-//     if (!form) return;
+    if (!form || !formStatus) return;
 
-//     form.addEventListener('submit', async (e) => {
-//         e.preventDefault();
+    form.addEventListener('submit', function(e) {
+        e.preventDefault();
+        
+        const formData = new FormData(form);
+        const object = Object.fromEntries(formData);
+        const json = JSON.stringify(object);
 
-//         // Réinitialisation du statut
-//         statusDiv.className = 'form-status';
-//         statusDiv.style.display = 'none';
-//         submitBtn.disabled = true;
-//         submitBtn.textContent = '> Envoi en cours...';
+        // Message de chargement et désactivation du bouton
+        formStatus.className = "form-status";
+        formStatus.style.display = "block";
+        formStatus.innerHTML = "> Envoi du paquet en cours...";
+        
+        if (submitBtn) {
+            submitBtn.disabled = true;
+            submitBtn.textContent = "> Transmission...";
+        }
 
-//         const formData = new FormData(form);
-
-//         try {
-//             const response = await fetch('send_mail.php', {
-//                 method: 'POST',
-//                 body: formData
-//             });
-
-//             const result = await response.json();
-
-//             if (result.success) {
-//                 statusDiv.className = 'form-status success';
-//                 statusDiv.textContent = `[SUCCESS] ${result.message}`;
-//                 form.reset();
-//             } else {
-//                 statusDiv.className = 'form-status error';
-//                 statusDiv.textContent = `[ERROR] ${result.message}`;
-//             }
-//         } catch (error) {
-//             statusDiv.className = 'form-status error';
-//             statusDiv.textContent = '[ERROR] Une erreur réseau est survenue. Veuillez réessayer.';
-//         } finally {
-//             statusDiv.style.display = 'block';
-//             submitBtn.disabled = false;
-//             submitBtn.textContent = '> Transmettre le message';
-//         }
-//     });
-// }
+        fetch('https://api.web3forms.com/submit', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+                'Accept': 'application/json'
+            },
+            body: json
+        })
+        .then(async (response) => {
+            let jsonResponse = await response.json();
+            if (response.status === 200) {
+                formStatus.className = "form-status success";
+                formStatus.innerHTML = "> [SUCCESS] Message transmis avec succès ! Je vous repond au plus vite 😃";
+                form.reset();
+            } else {
+                formStatus.className = "form-status error";
+                formStatus.innerHTML = "> [ERROR] " + (jsonResponse.message || "Une erreur est survenue. 🥲");
+            }
+        })
+        .catch(error => {
+            formStatus.className = "form-status error";
+            formStatus.innerHTML = "> [ERROR] Échec de la connexion au serveur.";
+        })
+        .finally(() => {
+            if (submitBtn) {
+                submitBtn.disabled = false;
+                submitBtn.textContent = "> Transmettre le message";
+            }
+        });
+    });
+}
