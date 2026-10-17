@@ -238,7 +238,7 @@ function initChatbot() {
     // Détecte automatiquement si tu es en local ou en ligne
     const API_URL = window.location.hostname === "localhost" || window.location.hostname === "127.0.0.1"
         ? "http://192.168.1.22:8001/chat"  // Adresse de dev sur ton réseau local
-        : "https://chat-api.maisonditchbranquinho.dynamic-dns.net/chat"; // Adresse publique en production
+        : "https://apibackendchatbotportfolio.dns04.com/chat"; // Adresse publique en production
 
     // Ouvrir la fenêtre
     chatButton.addEventListener('click', () => {
