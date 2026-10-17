@@ -368,7 +368,23 @@
             </div>
         </div>
     </footer>
+    <!-- Bouton pour ouvrir le chat -->
+    <button id="chat-widget-button">💬 Discuter avec mon IA</button>
 
+    <!-- Fenêtre du chat -->
+    <div id="chat-window">
+        <div id="chat-header">
+            <span>Assistant Professionnel</span>
+            <button id="chat-close">&times;</button>
+        </div>
+        <div id="chat-messages">
+            <div class="chat-message bot">Bonjour ! Je suis l'assistant virtuel de ce portfolio. Posez-moi vos questions sur son parcours et ses compétences.</div>
+        </div>
+        <div id="chat-input-area">
+            <input type="text" id="chat-input" placeholder="Posez une question..." />
+            <button id="chat-send">Envoyer</button>
+        </div>
+    </div>
     <script src="script.js"></script>
 </body>
 </html>

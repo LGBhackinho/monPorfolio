@@ -14,6 +14,9 @@ document.addEventListener('DOMContentLoaded', () => {
     // 5. Gestionnaire du formulaire de contact (AJAX / Web3Forms)
     initContactForm();
 
+    // 6. Chatbot IA Portfolio (Nouveau !)
+    initChatbot();
+
     // 6. Mise à jour automatique de l'année dans le footer
     const yearElement = document.getElementById('year');
     if (yearElement) {
@@ -197,16 +200,16 @@ function initContactForm() {
             let jsonResponse = await response.json();
             if (response.status === 200) {
                 formStatus.className = "form-status success";
-                formStatus.innerHTML = "> [SUCCESS] Message transmis avec succès ! Je vous repond au plus vite 😃";
+                formStatus.textContent = "> [SUCCESS] Message transmis avec succès ! Je vous repond au plus vite 😃";
                 form.reset();
             } else {
                 formStatus.className = "form-status error";
-                formStatus.innerHTML = "> [ERROR] " + (jsonResponse.message || "Une erreur est survenue. 🥲");
+                formStatus.textContent = "> [ERROR] " + (jsonResponse.message || "Une erreur est survenue. 🥲");
             }
         })
         .catch(error => {
             formStatus.className = "form-status error";
-            formStatus.innerHTML = "> [ERROR] Échec de la connexion au serveur.";
+            formStatus.textContent = "> [ERROR] Échec de la connexion au serveur.";
         })
         .finally(() => {
             if (submitBtn) {
@@ -214,5 +217,89 @@ function initContactForm() {
                 submitBtn.textContent = "> Transmettre le message";
             }
         });
+    });
+}
+
+/* ==========================================================================
+   6. CHATBOT IA PORTFOLIO
+   ========================================================================== */
+function initChatbot() {
+    const chatButton = document.getElementById('chat-widget-button');
+    const chatWindow = document.getElementById('chat-window');
+    const chatClose = document.getElementById('chat-close');
+    const chatSend = document.getElementById('chat-send');
+    const chatInput = document.getElementById('chat-input');
+    const chatMessages = document.getElementById('chat-messages');
+
+    if (!chatButton || !chatWindow || !chatSend || !chatInput || !chatMessages) return;
+
+    // À remplacer par ton IP locale pour les tests (ex: http://192.168.1.22:8001/chat),
+    // puis par ton domaine HTTPS (ex: https://chat.ton-domaine.fr/chat) une fois le reverse proxy configuré.
+    const API_URL = 'http://192.168.1.22:8001/chat';
+
+    // Ouvrir la fenêtre
+    chatButton.addEventListener('click', () => {
+        chatWindow.style.display = 'flex';
+        chatButton.style.display = 'none';
+    });
+
+    // Fermer la fenêtre
+    if (chatClose) {
+        chatClose.addEventListener('click', () => {
+            chatWindow.style.display = 'none';
+            chatButton.style.display = 'block';
+        });
+    }
+
+    // Envoyer un message
+    async function sendMessage() {
+        const text = chatInput.value;
+        if (!text) return;
+
+        appendMessage(text, 'user');
+        chatInput.value = '';
+        chatMessages.scrollTop = chatMessages.scrollHeight;
+
+        const loadingId = appendMessage('Réflexion en cours...', 'bot');
+
+        try {
+            const response = await fetch(API_URL, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({ message: text })
+            });
+
+            const data = await response.json();
+            
+            const loadingElement = document.getElementById(loadingId);
+            if (loadingElement) loadingElement.remove();
+            
+            if (response.ok) {
+                appendMessage(data.response, 'bot');
+            } else {
+                appendMessage('Désolé, une erreur est survenue.', 'bot');
+            }
+        } catch (error) {
+            const loadingElement = document.getElementById(loadingId);
+            if (loadingElement) loadingElement.remove();
+            appendMessage('Impossible de contacter le serveur.', 'bot');
+        }
+        
+        chatMessages.scrollTop = chatMessages.scrollHeight;
+    }
+
+    function appendMessage(text, sender) {
+        const msgDiv = document.createElement('div');
+        msgDiv.classList.add('chat-message', sender);
+        msgDiv.textContent = text; // Ou innerHTML si tu gères du HTML
+        chatMessages.appendChild(msgDiv);
+        chatMessages.scrollTop = chatMessages.scrollHeight; // Assure le défilement vers le bas
+    }
+
+    chatSend.addEventListener('click', sendMessage);
+    chatInput.addEventListener('keypress', (e) => {
+        if (e.key === 'Enter') sendMessage();
     });
 }
