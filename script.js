@@ -235,7 +235,10 @@ function initChatbot() {
 
     // À remplacer par ton IP locale pour les tests (ex: http://192.168.1.22:8001/chat),
     // puis par ton domaine HTTPS (ex: https://chat.ton-domaine.fr/chat) une fois le reverse proxy configuré.
-    const API_URL = 'http://192.168.1.22:8001/chat';
+    // Détecte automatiquement si tu es en local ou en ligne
+    const API_URL = window.location.hostname === "localhost" || window.location.hostname === "127.0.0.1"
+        ? "http://192.168.1.22:8001/chat"  // Adresse de dev sur ton réseau local
+        : "https://chat-api.maisonditchbranquinho.dynamic-dns.net/chat"; // Adresse publique en production
 
     // Ouvrir la fenêtre
     chatButton.addEventListener('click', () => {
