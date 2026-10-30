@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Simulation - Portail - Télécommande</title>
+    <link rel="stylesheet" href="../style.css">
+    <style>
+        body{background:radial-gradient(ellipse at top,#141b2e 0%,#0a0c16 60%)}
+        .sim-wrap{max-width:1000px;margin:80px auto;padding:20px}
+        .panel{background:rgba(13,17,23,0.9);border:1px solid var(--border-color);border-radius:8px;overflow:hidden;box-shadow:0 0 20px rgba(0,255,102,0.08)}
+        .panel-h{background:rgba(0,255,102,0.08);border-bottom:1px solid var(--border-color);padding:10px 16px;display:flex;align-items:center;gap:8px}
+        .dot{width:10px;height:10px;border-radius:50%}.dot.c{background:#ff5f56}.dot.m{background:#ffbd2e}.dot.x{background:#27c93f}
+        .panel-title{color:var(--text-dim);margin-left:10px}
+        .panel-body{padding:24px}
+        .header-row{display:flex;justify-content:space-between;align-items:flex-start;gap:20px;margin-bottom:20px;flex-wrap:wrap}
+        .app-title{color:var(--accent-color);font-size:1.3rem;margin-bottom:6px}
+        .app-desc{color:var(--text-secondary);max-width:600px;line-height:1.6}
+        .meta{display:flex;flex-direction:column;gap:6px;color:var(--text-dim);text-align:right}
+        .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:12px}
+        .card{border:1px solid var(--border-color);padding:14px;background:rgba(0,0,0,0.4);position:relative;cursor:help}
+        .card:hover{border-color:var(--accent-color)}
+        .card .tooltip{position:absolute;bottom:-36px;left:50%;transform:translateX(-50%);background:#000;border:1px solid var(--accent-color);color:var(--text-secondary);padding:6px 10px;border-radius:4px;display:none;font-size:0.75rem;white-space:nowrap;z-index:5}
+        .card:hover .tooltip{display:block}
+        .card-title{color:var(--accent-color);margin-bottom:6px}
+        .card-text{color:var(--text-secondary);font-size:0.9rem;line-height:1.6}
+        .list{display:flex;flex-direction:column;gap:8px}
+        .item{border:1px solid var(--border-color);padding:10px 12px;color:var(--text-secondary);position:relative;cursor:help}
+        .item:hover{border-color:var(--accent-color);color:var(--text)}
+        .item .tooltip{position:absolute;left:102%;top:50%;transform:translateY(-50%);background:#000;border:1px solid var(--accent-color);color:var(--text-secondary);padding:6px 10px;border-radius:4px;display:none;font-size:0.75rem;white-space:nowrap;z-index:5}
+        .item:hover .tooltip{display:block}
+    </style>
+</head>
+<body>
+    <canvas id="matrix-canvas"></canvas>
+    <nav class="navbar"><div class="nav-container"><a href="../index.html" class="nav-logo">&gt; ruddy.sh<span class="cursor">_</span></a></div></nav>
+    <main class="sim-wrap">
+        <div class="panel">
+            <div class="panel-h"><span class="dot c"></span><span class="dot m"></span><span class="dot x"></span><span class="panel-title">simulation://portail/interface-fidèle</span></div>
+            <div class="panel-body">
+                <div class="header-row">
+                    <div>
+                        <div class="app-title">&gt; Portail - Télécommande</div>
+                        <div class="app-desc">Interface minimaliste pour actionner un portail/portillon à distance via PHP.</div>
+                    </div>
+                    <div class="meta">
+                        <div>[ARCH] Frontend + endpoint PHP (trigger.php)</div>
+                        <div>[STACK] HTML, CSS, JavaScript, PHP</div>
+                        <div>[CHEMIN] ../portail/</div>
+                    </div>
+                </div>
+                <div class="grid">
+                    <div class="card">
+                        <div class="card-title">&gt; Interface réelle reproduite</div>
+                        <div class="card-text">Aperçu statique fidèle à la structure de l'application. Données factices uniquement.</div>
+                        <div class="tooltip">[SIMULATION] Reproduction visuelle - aucune action dynamique</div>
+                    </div>
+                    <div class="card">
+                        <div class="card-title">&gt; Architecture / Langages</div>
+                        <div class="card-text">Architecture : Frontend + endpoint PHP (trigger.php)<br>Langages : HTML, CSS, JavaScript, PHP</div>
+                        <div class="tooltip">[INFO] Infobulle explicative sur architecture/langages/stack/rôle</div>
+                    </div>
+                </div>
+                <div style="margin-top:18px">
+                    <div style="color:var(--accent-color);margin-bottom:10px">&gt; Fonctionnalités (simulées)</div>
+                    <div class="list">
+                <div class="item"><span style="color:var(--accent-color)">[•]</span> Bouton animé<div class="tooltip">[INFO] Bouton animé - Élément simulé, données statiques factices</div></div>
+                <div class="item"><span style="color:var(--accent-color)">[•]</span> Appel AJAX<div class="tooltip">[INFO] Appel AJAX - Élément simulé, données statiques factices</div></div>
+                <div class="item"><span style="color:var(--accent-color)">[•]</span> États visuels (loading/succès/erreur)<div class="tooltip">[INFO] États visuels (loading/succès/erreur) - Élément simulé, données statiques factices</div></div>
+
+                    </div>
+                </div>
+                <div style="margin-top:14px;color:var(--text-dim);font-size:0.85rem">
+                    [NOTES] L'action est déléguée côté serveur selon matériel. - Seuls des infobulles explicatives sont présentes
+                </div>
+            </div>
+        </div>
+    </main>
+    <script src="../script.js"></script>
+</body>
+</html>

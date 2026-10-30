@@ -444,6 +444,11 @@ body {
     color: #b5e6b5;
     margin-bottom: 15px;
 }
+.project-infos li {
+    font-size: 0.88rem;
+    color: #b5e6b5;
+    margin-bottom: 15px;
+}
 
 .tags {
     display: flex;
