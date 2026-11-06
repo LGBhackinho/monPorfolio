@@ -136,7 +136,8 @@
         <!-- Section Projets -->
         <section id="projects" class="section">
             <h2 class="section-title"><span class="prompt-prefix">&gt;</span> ls -la ./projets/</h2>
-            
+            <p class="section-intro">&gt; Sélection de projets — du besoin métier à la mise en production. Chaque fiche résume le contexte, mon rôle et le résultat obtenu.</p>
+
             <div class="filter-buttons">
                 <button class="filter-btn active" data-filter="all">Tous</button>
                 <button class="filter-btn" data-filter="web">Web &amp; Application</button>
@@ -144,59 +145,240 @@
                 <button class="filter-btn" data-filter="domotique">Domotique &amp; IoT</button>
             </div>
 
-            <div class="projects-grid">
-                <!-- Projet 1 -->
-                <div class="project-card" data-category="web">
-                    <div class="project-img-holder">
-                        <img src="https://via.placeholder.com/600x350/051005/00ff66?text=CPRO+Education" alt="CPRO éducation">
+            <h3 class="project-group-title" id="featured-title">[ Projets phares ]</h3>
+            <div class="projects-featured">
+
+                <!-- Projet phare 1 -->
+                <div class="project-card featured" data-category="web">
+                    <!-- TODO: remplacer le visuel par une capture d'écran de CPRO Éducation -->
+                    <div class="project-visual">
+                        <span class="visual-line">&gt; cat cpro_education.json</span>
+                        <strong class="visual-title">CPRO Éducation</strong>
+                        <span class="visual-meta">Réseau Canopé · plateforme éducative</span>
                     </div>
                     <div class="project-info">
-                        <h3>CPRO Éducation</h3>
-                        <p>Gestion, développement de nouveaux modules, débogage et amélioration CI/CD sur l'application CPRO Éducation pour Réseau Canopé.</p>
+                        <div class="project-heading">
+                            <h3>CPRO Éducation</h3>
+                            <span class="project-badge badge-pro">Expérience pro</span>
+                        </div>
+                        <p class="project-hook">Maintenir et faire évoluer une plateforme éducative utilisée au quotidien par les enseignants.</p>
+                        <p class="project-meta">Réseau Canopé · Concepteur d'application · Janv. 2025 – Janv. 2026</p>
+
+                        <ul class="project-facts">
+                            <li>
+                                <span class="fact-key">Contexte</span>
+                                <span class="fact-value">Application de gestion d'activités pédagogiques sur une base PHP/MySQL existante et en production.</span>
+                            </li>
+                            <li>
+                                <span class="fact-key">Réalisé</span>
+                                <span class="fact-value">Développement de nouveaux modules, correction d'anomalies, amélioration CI/CD et support utilisateurs N2. <!-- TODO: préciser le nombre de modules / anomalies traitées --></span>
+                            </li>
+                            <li>
+                                <span class="fact-key">Résultat</span>
+                                <span class="fact-value">Retour utilisateur satisfait. <!-- TODO: chiffrer (temps de déploiement avant/après, nb d'utilisateurs) --></span>
+                            </li>
+                        </ul>
+
+                        <p class="project-highlight"><span class="highlight-key">&gt; choix technique :</span> sécuriser la CI/CD avant d'ajouter des fonctionnalités, pour livrer sereinement sur une base legacy.</p>
+
                         <div class="tags">
                             <span class="tag">PHP</span>
                             <span class="tag">MySQL</span>
                             <span class="tag">JavaScript</span>
-                            <span class="tag">CI/CD</span>
+                            <span class="tag">Git</span>
+                            <span class="tag">GitLab</span>
+                            <span class="tag">Boostrap</span>
                         </div>
                         <div class="project-links">
-                            <a href="#contact" class="link-btn">&gt; Contact</a>
+                            <a href="#contact" class="link-btn">&gt; Détails sur demande</a>
                         </div>
                     </div>
                 </div>
 
-                <!-- Projet 2 -->
-                <div class="project-card" data-category="mobile">
-                    <div class="project-img-holder">
-                        <img src="https://via.placeholder.com/600x350/051005/00ff66?text=Applications+Android" alt="Applications Android">
+                <!-- Projet phare 2 -->
+                <div class="project-card featured" data-category="web">
+                    <!-- TODO: remplacer le visuel par une capture d'écran de JobPilot -->
+                    <div class="project-visual">
+                        <span class="visual-line">&gt; cat jobpilot.json</span>
+                        <strong class="visual-title">JobPilot</strong>
+                        <span class="visual-meta">Symfony · recherche d'emploi assistée par IA</span>
                     </div>
                     <div class="project-info">
-                        <h3>Applications Android (JAVA)</h3>
-                        <p>Développement sous Android Studio d'une application de suivi des bouteilles d'oxygène (CHBL Laborit).</p>
+                        <div class="project-heading">
+                            <h3>JobPilot</h3>
+                            <span class="project-badge badge-perso">Projet perso</span>
+                        </div>
+                        <p class="project-hook">Centraliser toute une recherche d'emploi dans un tableau de bord : CV, offres, lettres, entretiens et relances.</p>
+                        <p class="project-meta">Projet personnel · Développeur full-stack · Symfony · 2025</p>
+
+                        <ul class="project-facts">
+                            <li>
+                                <span class="fact-key">Contexte</span>
+                                <span class="fact-value">Une recherche d'emploi éclatée entre fichiers, mails et tableurs, vision globale des candidatures, des relances ni des candidatures spontanées.</span>
+                            </li>
+                            <li>
+                                <span class="fact-key">Réalisé</span>
+                                <span class="fact-value">Tableau de bord local, analyse de CV, matching CV ↔ offre, lettres classiques et spontanées, préparation d'entretiens, recherche Adzuna + Jooble et annuaire d'entreprises par codes NAF.</span>
+                            </li>
+                            <li>
+                                <span class="fact-key">Résultat</span>
+                                <span class="fact-value">Un pipeline complet des offres jusqu'aux relances, avec données JSON sans base de données (enregistreement fichier json) et résultats IA réutilisés tant que le CV ou l'offre ne changent pas.</span>
+                            </li>
+                        </ul>
+
+                        <p class="project-highlight"><span class="highlight-key">&gt; choix technique :</span> plusieurs providers IA configurables avec repli automatique, et un cache des résultats pour limiter les appels et garder un tableau de bord instantané.</p>
+
                         <div class="tags">
-                            <span class="tag">Android Studio</span>
-                            <span class="tag">JAVA</span>
-                            <span class="tag">Mobile</span>
+                            <span class="tag">PHP</span>
+                            <span class="tag">Symfony</span>
+                            <span class="tag">Twig</span>
+                            <span class="tag">JavaScript</span>
+                            <span class="tag">API Adzuna / Jooble</span>
+                            <span class="tag">IA multi-provider</span>
                         </div>
                         <div class="project-links">
-                            <a href="https://github.com/LGBhackinho" target="_blank" class="link-btn">&gt; GitHub</a>
+                            <a href="simulations/jobpilot.jpg" class="link-btn" data-preview="simulations/jobpilot.jpg" data-preview-alt="Aperçu de l'application JobPilot">&gt; Aperçu</a>
+                            <a href="https://github.com/LGBhackinho/jobpilot" target="_blank" class="link-btn">&gt; GitHub</a>
                         </div>
                     </div>
                 </div>
+
+                <!-- Projet phare 3 -->
+                <div class="project-card featured" data-category="web">
+                    <!-- TODO: remplacer le visuel par une capture du site coaching -->
+                    <div class="project-visual">
+                        <span class="visual-line">&gt; cat coaching.json</span>
+                        <strong class="visual-title">Site Coaching</strong>
+                        <span class="visual-meta">Nutrition · espace client &amp; recettes</span>
+                    </div>
+                    <div class="project-info">
+                        <div class="project-heading">
+                            <h3>Site Coaching nutritionnel</h3>
+                            <span class="project-badge badge-perso">Projet perso</span>
+                        </div>
+                        <p class="project-hook">Aider un coach nutritionnel à suivre ses clients, à partager ses recettes et les aider a comprendre la nutrition et les calculs caloriques.</p>
+                        <p class="project-meta">Projet personnel / client · Développeur full-stack · PHP</p>
+
+                        <ul class="project-facts">
+                            <li>
+                                <span class="fact-key">Contexte</span>
+                                <span class="fact-value">Besoin d'un espace unique pour les calculs nutritionnels, le suivi utilisateur et le contenu recettes.</span>
+                            </li>
+                            <li>
+                                <span class="fact-key">Réalisé</span>
+                                <span class="fact-value">Calculateur de macros, comptes utilisateurs, catalogue de recettes et gestion des favoris.</span>
+                            </li>
+                            <li>
+                                <span class="fact-key">Résultat</span>
+                                <span class="fact-value">Un parcours client complet, du calcul des besoins jusqu'aux recettes favorites. <!-- TODO: ajouter un chiffre (nb de clients / recettes) --></span>
+                            </li>
+                        </ul>
+
+                        <p class="project-highlight"><span class="highlight-key">&gt; choix technique :</span> isoler la logique de calcul côté serveur pour garantir des résultats fiables et cohérents.</p>
+
+                        <div class="tags">
+                            <span class="tag">PHP</span>
+                            <span class="tag">MySQL</span>
+                            <span class="tag">HTML/CSS</span>
+                            <span class="tag">JavaScript</span>
+                        </div>
+                        <div class="project-links">
+                            <a href="simulations/marieclement.jpg" class="link-btn" data-preview="simulations/marieclement.jpg" data-preview-alt="Aperçu du site Marie Clément - Nutrition Santé">&gt; Aperçu</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Projet phare 4 -->
+                <div class="project-card featured" data-category="web">
+                    <div class="project-visual">
+                        <span class="visual-line">&gt; cat brief.json</span>
+                        <strong class="visual-title">Briefing Vocal</strong>
+                        <span class="visual-meta">Node/Express · IA &amp; synthèse vocale</span>
+                    </div>
+                    <div class="project-info">
+                        <div class="project-heading">
+                            <h3>Briefing Matinal IA</h3>
+                            <span class="project-badge badge-perso">Projet perso</span>
+                        </div>
+                        <p class="project-hook">Recevoir chaque matin un briefing audio personnalisé : météo, actualités, dernier mail important et offres d'emploi, sans avoir à tout lire.</p>
+                        <p class="project-meta">Projet personnel · Développeur full-stack · Node.js / Vite · 2026</p>
+
+                        <ul class="project-facts">
+                            <li>
+                                <span class="fact-key">Contexte</span>
+                                <span class="fact-value">Le besoin d'une routine matinale rapide : rassembler météo, actualités, mails et offres d'emploi en un seul flux, consultable à la voix.</span>
+                            </li>
+                            <li>
+                                <span class="fact-key">Réalisé</span>
+                                <span class="fact-value">Synchronisation IMAP des derniers mails de chaque expéditeur configuré, puis un appel unique à Gemini ou Mistral avec recherche web pour produire les trois sections, lues par TTS navigateur ou serveur.</span>
+                            </li>
+                            <li>
+                                <span class="fact-key">Résultat</span>
+                                <span class="fact-value">Un workflow n8n déclenche la synchronisation chaque matin à 07:00 ; le serveur met le briefing en cache, donc l'ouverture de la page est instantanée.</span>
+                            </li>
+                        </ul>
+
+                        <p class="project-highlight"><span class="highlight-key">&gt; choix technique :</span> un seul appel IA par synchronisation et un cache serveur pour économiser le quota Gemini (20 requêtes/jour/modèle) et répondre sans attendre, avec configuration de quel mail recuperer.</p>
+
+                        <div class="tags">
+                            <span class="tag">Node.js</span>
+                            <span class="tag">Express</span>
+                            <span class="tag">Vite</span>
+                            <span class="tag">Gemini / Mistral</span>
+                            <span class="tag">IMAP</span>
+                            <span class="tag">TTS</span>
+                            <span class="tag">n8n</span>
+                        </div>
+                        <div class="project-links">
+                            <a href="simulations/brief.jpg" class="link-btn" data-preview="simulations/brief.jpg" data-preview-alt="Aperçu de l'application Briefing Matinal IA">&gt; Aperçu</a>
+                            <a href="https://github.com/LGBhackinho/briefing-vocal" target="_blank" class="link-btn">&gt; GitHub</a>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+            <h3 class="project-group-title" id="others-title">[ Autres projets ]</h3>
+            <div class="projects-grid">
 
                 <!-- Projet 3 -->
-                <div class="project-card" data-category="domotique">
-                    <div class="project-img-holder">
-                        <img src="https://via.placeholder.com/600x350/051005/00ff66?text=Maison+Domotique" alt="Maison Domotique">
+                <div class="project-card" data-category="mobile">
+                    <!-- TODO: remplacer le visuel par une capture de l'application Android -->
+                    <div class="project-visual">
+                        <span class="visual-line">&gt; cat chbl_oxygene.json</span>
+                        <strong class="visual-title">Suivi Oxygène</strong>
+                        <span class="visual-meta">CHBL Laborit · application Android</span>
                     </div>
                     <div class="project-info">
-                        <h3>Maison Domotique &amp; Infrastructures</h3>
-                        <p>Système domotique complet avec Jeedom &amp; Home Assistant sous docker, NVR Caméra Milestone, borne d'arcade et afficheur connecté AWTRIX sous NAS Synology &amp; Docker.</p>
+                        <div class="project-heading">
+                            <h3>Suivi des bouteilles d'oxygène</h3>
+                            <span class="project-badge badge-pro">Stage</span>
+                        </div>
+                        <p class="project-hook">Aide au suivi et à la traçabilité des bouteilles d'oxygène par une application Android utilisée par les soignants.</p>
+                        <p class="project-meta">CHBL Laborit · Stage développeur · Août – Sept. 2024</p>
+
+                        <ul class="project-facts">
+                            <li>
+                                <span class="fact-key">Contexte</span>
+                                <span class="fact-value">Traçabilité des bouteilles d'oxygène avec liaison de leur API.</span>
+                            </li>
+                            <li>
+                                <span class="fact-key">Réalisé</span>
+                                <span class="fact-value">Application Android en Java pour le suivi terrain en temps reel avec scan des etiquette de localisation et de reference.</span>
+                            </li>
+                            <li>
+                                <span class="fact-key">Résultat</span>
+                                <span class="fact-value">Saisie simplifiée sur le terrain et suivi centralisé des stocks selon la localisation. <!-- TODO: ajouter un chiffre (nb de services, de bouteilles suivies) --></span>
+                            </li>
+                        </ul>
+
+                        <p class="project-highlight"><span class="highlight-key">&gt; choix technique :</span> une app native Android pour rester utilisable hors connexion et adaptée aux contraintes du terrain avec scan code barre et qr code pour recupere et/ou envoyer les infos.</p>
+
                         <div class="tags">
-                            <span class="tag">Jeedom</span>
-                            <span class="tag">Home Assistant</span>
-                            <span class="tag">Docker</span>
-                            <span class="tag">Synology</span>
+                            <span class="tag">Android Studio</span>
+                            <span class="tag">Java</span>
+                            <span class="tag">barrecode</span>
+                            <span class="tag">ZXing</span>
                         </div>
                         <div class="project-links">
                             <a href="https://github.com/LGBhackinho" target="_blank" class="link-btn">&gt; GitHub</a>
@@ -205,84 +387,103 @@
                 </div>
 
                 <!-- Projet 4 -->
-                <div class="project-card" data-category="web">
-                    <div class="project-img-holder">
-                        <img src="https://via.placeholder.com/600x350/051005/00ff66?text=Site Coaching Nutritionnel" alt="Web Apps">
+                <div class="project-card" data-category="domotique">
+                    <!-- TODO: remplacer le visuel par une capture du dashboard domotique -->
+                    <div class="project-visual">
+                        <span class="visual-line">&gt; cat home_lab.json</span>
+                        <strong class="visual-title">Maison &amp; Infra</strong>
+                        <span class="visual-meta">Jeedom · Home Assistant · Synology</span>
                     </div>
                     <div class="project-info">
-                        <h3>Site Coaching</h3>
-                        <p>Conception d'un site pour un coach nutritionnel. Gestion de calcul Macro nutritionnel. Enregistrement des données utilisateurs. Catalogue de recettes avec gestion de favoris</p>
+                        <div class="project-heading">
+                            <h3>Maison domotique &amp; infrastructures</h3>
+                            <span class="project-badge badge-perso">Projet perso</span>
+                        </div>
+                        <p class="project-hook">Administrer une maison connectée et ses services comme un mini datacenter.</p>
+                        <p class="project-meta">Projet personnel · Admin système &amp; développement · Docker</p>
+
+                        <ul class="project-facts">
+                            <li>
+                                <span class="fact-key">Contexte</span>
+                                <span class="fact-value">Centraliser domotique, vidéosurveillance, affichage connecté et services web sur un NAS.</span>
+                            </li>
+                            <li>
+                                <span class="fact-key">Réalisé</span>
+                                <span class="fact-value">Jeedom et Home Assistant conteneurisés, NVR Milestone, afficheur AWTRIX et borne d'arcade sous Synology &amp; Docker.</span>
+                            </li>
+                            <li>
+                                <span class="fact-key">Résultat</span>
+                                <span class="fact-value">Des services isolés, redémarrables indépendamment et accessibles à distance. <!-- TODO: préciser le nb de services / l'uptime --></span>
+                            </li>
+                        </ul>
+
+                        <p class="project-highlight"><span class="highlight-key">&gt; choix technique :</span> Docker pour isoler chaque service et pouvoir le mettre à jour sans casser le reste de l'installation.</p>
+
                         <div class="tags">
-                            <span class="tag">PHP</span>
-                            <span class="tag">HTML/CSS</span>
+                            <span class="tag">Jeedom</span>
+                            <span class="tag">Home Assistant</span>
+                            <span class="tag">Docker</span>
+                            <span class="tag">Synology</span>
+                            <span class="tag">Linux</span>
                         </div>
                         <div class="project-links">
-                            <a href='#' target="_blank" class="link-btn">&gt; Site Live</a>
+                            <a href="https://github.com/LGBhackinho" target="_blank" class="link-btn">&gt; GitHub</a>
                         </div>
                     </div>
                 </div>
 
-                <!-- Projet 5 -->
+                <!-- Projet 6 -->
                 <div class="project-card" data-category="web">
-                    <div class="project-img-holder">
-                        <img src="https://via.placeholder.com/600x350/051005/00ff66?text=Micro-services+%26+Tools" alt="Projets personnels et outils web">
+                    <!-- TODO: remplacer le visuel par une capture d'un des outils -->
+                    <div class="project-visual">
+                        <span class="visual-line">&gt; ls ~/lab</span>
+                        <strong class="visual-title">Lab personnel</strong>
+                        <span class="visual-meta">Outils du quotidien · automatisation</span>
                     </div>
                     <div class="project-info">
-                        <h3>Projets Web &amp; Micro-services Personnels</h3>
-                        <p>Développement de diverses applications et outils sur-mesure pour répondre à mes besoins spécifiques :</p>
-                        
-                        <ul class="project-details" style="list-style: none; padding-left: 0; margin: 12px 0; font-size: 0.9em; line-height: 1.6;">
-                            <li>&gt; Downloader YouTube</li>
-                            <li>&gt; Gestionnaire d'entretiens (Maison &amp; Voiture)</li>
-                            <li>&gt; Générateur automatique de quittances de loyer</li>
-                            <li>&gt; Gestionnaire de transfert SMS</li>
-                            <li>&gt; Catalogue vidéo de rééducation kiné</li>
-                            <li>&gt; Chronomètre Tabata paramétrable</li>
-                            <li>&gt; Application de tirage au sort (Cadeaux de Noël)</li>
-                            <li>&gt; Web App ouverture de portail</li>
-                            <li>&gt; API chatbot portFolio</li>
+                        <div class="project-heading">
+                            <h3>Outils &amp; micro-services personnels</h3>
+                            <span class="project-badge badge-perso">Lab</span>
+                        </div>
+                        <p class="project-hook">Une dizaine d'outils construits pour résoudre mes propres problèmes du quotidien.</p>
+                        <p class="project-meta">Projets personnels · Full-stack &amp; automatisation · PHP, Python, JavaScript</p>
+
+                        <ul class="project-facts">
+                            <li>
+                                <span class="fact-key">Quotidien</span>
+                                <span class="fact-value">Quittances de loyer en PDF, suivi des entretiens maison/voiture, transfert SMS, ouverture de portail, suivi budgétaire de travaux, Tirage au sort Noel.</span>
+                            </li>
+                            <li>
+                                <span class="fact-key">Contenu</span>
+                                <span class="fact-value">Téléchargeur YouTube, catalogue vidéo de rééducation kiné etc...</span>
+                            </li>
+                            <li>
+                                <span class="fact-key">Résultat</span>
+                                <span class="fact-value">Des outils réellement utilisés au quotidien, couvrant PDF, e-mail, planification,chrono sport et API.</span>
+                            </li>
                         </ul>
 
+                        <p class="project-highlight"><span class="highlight-key">&gt; choix technique :</span> le langage le plus simple pour chaque besoin — PHP pour le web, Python pour l'automatisation, JavaScript pour l'interface.</p>
+
                         <div class="tags">
+                            <span class="tag">PHP</span>
                             <span class="tag">Python</span>
                             <span class="tag">Django</span>
-                            <span class="tag">PHP</span>
-                            <span class="tag">HTML/CSS</span>
-                            <span class="tag">Android Studio</span>
+                            <span class="tag">JavaScript</span>
                             <span class="tag">Docker</span>
                             <span class="tag">Nginx</span>
                         </div>
-                        <div class="project-links">
-                            <a href="https://github.com/LGBhackinho" target="_blank" class="link-btn">&gt; Voir sur GitHub</a>
+                        <div class="project-links project-links--wrap">
+                            <a href="simulations/quittance.jpg" class="link-btn" data-preview="simulations/quittance.jpg" data-preview-alt="Aperçu de l'application Quittance">&gt; Aperçu Quittance</a>
+                            <a href="simulations/travaux.jpg" class="link-btn" data-preview="simulations/travaux.jpg" data-preview-alt="Aperçu de l'application Travaux">&gt; Aperçu Travaux</a>
+                            <a href="simulations/entretiens.jpg" class="link-btn" data-preview="simulations/entretiens.jpg" data-preview-alt="Aperçu de l'application Entretiens">&gt; Aperçu Entretiens</a>
+                            <a href="simulations/youtube.jpg" class="link-btn" data-preview="simulations/youtube.jpg" data-preview-alt="Aperçu de l'application YouTube Maison">&gt; Aperçu YouTube</a>
+                            <a href="simulations/tabata.jpg" class="link-btn" data-preview="simulations/tabata.jpg" data-preview-alt="Aperçu de l'application Chrono Tabata">&gt; Aperçu Tabata</a>
+                            <a href="simulations/tirageAuSort.jpg" class="link-btn" data-preview="simulations/tirageAuSort.jpg" data-preview-alt="Aperçu de l'application tirage au sort Noel">&gt; Aperçu Tirage au sort Noel</a>
+                            <a href="https://github.com/LGBhackinho" target="_blank" class="link-btn">&gt; GitHub</a>
                         </div>
                     </div>
                 </div>
-                <!-- Projet 6 -->
-                <div class="project-card" data-category="web">
-                    <div class="project-img-holder">
-                        <img src="https://via.placeholder.com/600x350/051005/00ff66?text=JobPilot (aide emploi par IA)" alt="Projets personnels et outils web">
-                    </div>
-                    <div class="project-info">
-                        <h3>Projets Web pour suivi et aide a la recherche d emploi sur CV</h3>
-                        <ul class="project-infos">
-                            <li><strong>Analyse et amélioration de CV :</strong> <p class="project-details">Diagnostic IA pour valoriser vos compétences.</p></li>
-                            <li><strong>Aide à la préparation d'entretiens :</strong> Conseils personnalisés pour gagner en assurance.</li>
-                            <li><strong>Génération de lettres de motivation :</strong> Création rapide de lettres sur mesure pour chaque poste.</li>
-                            <li><strong>Gestion des candidatures :</strong> Suivi centralisé de vos envois et de vos relances (offres ciblées et candidatures spontanées).</li>
-                        </ul>
-
-                        <div class="tags">
-                            <span class="tag">PHP</span>
-                            <span class="tag">HTML/CSS</span>
-                            <span class="tag">Symfony</span>
-                            <span class="tag">OpenCode</span>
-                        </div>
-                        <div class="project-links">
-                            <a href="https://github.com/LGBhackinho" target="_blank" class="link-btn">&gt; Voir sur GitHub</a>
-                        </div>
-                    </div>
-                </div>
-
 
             </div>
         </section>
@@ -414,6 +615,12 @@
             <button id="chat-send">Envoyer</button>
         </div>
     </div>
+
+    <!-- Aperçu d'image (lightbox) -->
+    <div id="image-preview" class="image-preview" role="dialog" aria-modal="true" aria-hidden="true" aria-label="Aperçu de l'application" tabindex="-1">
+        <img id="image-preview-img" src="" alt="">
+    </div>
+
     <script src="script.js"></script>
 </body>
 </html>

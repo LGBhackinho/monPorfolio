@@ -17,7 +17,10 @@ document.addEventListener('DOMContentLoaded', () => {
     // 6. Chatbot IA Portfolio (Nouveau !)
     initChatbot();
 
-    // 6. Mise à jour automatique de l'année dans le footer
+    // 7. Aperçu d'image sans changement de page
+    initImagePreview();
+
+    // 8. Mise à jour automatique de l'année dans le footer
     const yearElement = document.getElementById('year');
     if (yearElement) {
         yearElement.textContent = new Date().getFullYear();
@@ -142,6 +145,22 @@ function initProjectFilter() {
 
     if (filterBtns.length === 0 || projectCards.length === 0) return;
 
+    // Groupes de projets : on masque le titre du groupe s'il ne reste aucune carte visible
+    const groups = [
+        { title: document.getElementById('featured-title'), container: document.querySelector('.projects-featured') },
+        { title: document.getElementById('others-title'), container: document.querySelector('.projects-grid') }
+    ];
+
+    function updateGroups() {
+        groups.forEach(({ title, container }) => {
+            if (!container) return;
+            const hasVisibleCard = Array.from(container.querySelectorAll('.project-card'))
+                .some(card => card.style.display !== 'none');
+            if (title) title.style.display = hasVisibleCard ? '' : 'none';
+            container.style.display = hasVisibleCard ? '' : 'none';
+        });
+    }
+
     filterBtns.forEach(btn => {
         btn.addEventListener('click', () => {
             filterBtns.forEach(b => b.classList.remove('active'));
@@ -157,6 +176,8 @@ function initProjectFilter() {
                     card.style.display = 'none';
                 }
             });
+
+            updateGroups();
         });
     });
 }
@@ -304,5 +325,59 @@ function initChatbot() {
     chatSend.addEventListener('click', sendMessage);
     chatInput.addEventListener('keypress', (e) => {
         if (e.key === 'Enter') sendMessage();
+    });
+}
+
+/* ==========================================================================
+   7. APERÇU D'IMAGE (LIGHTBOX)
+   ========================================================================== */
+function initImagePreview() {
+    const overlay = document.getElementById('image-preview');
+    const previewImg = document.getElementById('image-preview-img');
+    const triggers = document.querySelectorAll('[data-preview]');
+
+    if (!overlay || !previewImg || triggers.length === 0) return;
+
+    let lastTrigger = null;
+
+    function openPreview(trigger) {
+        const src = trigger.getAttribute('data-preview');
+        if (!src) return;
+
+        lastTrigger = trigger;
+        previewImg.src = src;
+        previewImg.alt = trigger.getAttribute('data-preview-alt') || trigger.textContent.trim();
+
+        overlay.classList.add('active');
+        overlay.setAttribute('aria-hidden', 'false');
+        document.body.style.overflow = 'hidden';
+        overlay.focus();
+    }
+
+    function closePreview() {
+        overlay.classList.remove('active');
+        overlay.setAttribute('aria-hidden', 'true');
+        previewImg.removeAttribute('src');
+        document.body.style.overflow = '';
+
+        if (lastTrigger) lastTrigger.focus();
+    }
+
+    triggers.forEach(trigger => {
+        trigger.addEventListener('click', (event) => {
+            event.preventDefault();
+            openPreview(trigger);
+        });
+    });
+
+    // Un clic sur le fond (à côté de l'image) ferme l'aperçu.
+    overlay.addEventListener('click', (event) => {
+        if (event.target === overlay) closePreview();
+    });
+
+    document.addEventListener('keydown', (event) => {
+        if (event.key === 'Escape' && overlay.classList.contains('active')) {
+            closePreview();
+        }
     });
 }
